@@ -3,15 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dino Game</title>
+  <title>Candy Paradise</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="game-container">
-    <div class="dino"></div>
-    <div class="obstacle"></div>
-    <div class="score">Score: 0</div>
+  <div class="container">
+    <!-- Navigation Dots -->
+    <div class="navigation">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+    </div>
+
+    <!-- Slide 1 -->
+    <div class="slide" id="slide-1">
+      <div class="content">
+        <h1>Welcome to Candy Paradise</h1>
+        <p>The sweetest experience you'll ever have!</p>
+        <button class="cta">Shop Now</button>
+      </div>
+      <img src="candy1.jpg" alt="Candy Paradise" class="image">
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" id="slide-2">
+      <div class="content">
+        <h1>Bold, Sweet, and Fun</h1>
+        <p>Our candies come in vibrant flavors that pop in your mouth!</p>
+        <button class="cta">Explore Flavors</button>
+      </div>
+      <img src="candy2.jpg" alt="Vibrant Flavors" class="image">
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" id="slide-3">
+      <div class="content">
+        <h1>Bring Joy to Every Moment</h1>
+        <p>Perfect for parties, gifts, or just a treat for yourself.</p>
+        <button class="cta">Buy Now</button>
+      </div>
+      <img src="candy3.jpg" alt="Candy Joy" class="image">
+    </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
