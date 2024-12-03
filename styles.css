@@ -52,11 +52,21 @@ body {
   width: 20px;
   height: 40px;
   background-color: #555;
-  animation: obstacle-move 3s linear infinite;
+  animation: obstacle-move 2s linear infinite;
 }
 
 /* Obstacle movement */
 @keyframes obstacle-move {
-  0% { transform: translateX(0); }
+  0% { transform: translateX(100vw); }
   100% { transform: translateX(-120vw); }
+}
+
+/* Score display */
+.score {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
 }
