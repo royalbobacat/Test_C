@@ -1,51 +1,31 @@
-const dino = document.querySelector('.dino');
-const obstacle = document.querySelector('.obstacle');
-const scoreDisplay = document.querySelector('.score');
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
 
-let score = 0;
-let isGameOver = false;
+let currentSlide = 0;
 
-// Dino jump functionality
-document.addEventListener('keydown', (event) => {
-  if ((event.code === 'Space' || event.code === 'ArrowUp') && !isGameOver) {
-    if (!dino.classList.contains('jump')) {
-      dino.classList.add('jump');
-      setTimeout(() => {
-        dino.classList.remove('jump');
-      }, 500); // Match the jump animation duration
-    }
-  }
-});
-
-// Update score
-const updateScore = () => {
-  if (!isGameOver) {
-    score += 1;
-    scoreDisplay.textContent = `Score: ${score}`;
-    setTimeout(updateScore, 100);
-  }
+// Function to show a slide
+const showSlide = (index) => {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    slide.style.transform = `translateX(${100 * (i - index)}%)`;
+  });
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[index].classList.add('active');
 };
 
-// Collision detection
-const checkCollision = setInterval(() => {
-  const dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'));
-  const obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+// Initialize slides
+showSlide(currentSlide);
 
-  if (obstacleLeft > 0 && obstacleLeft < 60 && dinoBottom < 40) {
-    // Collision detected
-    isGameOver = true;
-    alert(`Game Over! Your score is ${score}`);
-    obstacle.style.animation = 'none'; // Stop the obstacle
-    obstacle.style.display = 'none';  // Hide the obstacle
-  }
-}, 10);
-
-// Restart game
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'Enter' && isGameOver) {
-    location.reload(); // Reload the page to restart the game
-  }
+// Add navigation functionality
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentSlide = index;
+    showSlide(currentSlide);
+  });
 });
 
-// Start the game
-updateScore();
+// Auto-slide functionality (optional)
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 5000);
