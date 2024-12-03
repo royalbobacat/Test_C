@@ -1,72 +1,99 @@
 /* General styles */
 body {
   margin: 0;
+  font-family: 'Arial', sans-serif;
   overflow: hidden;
-  background-color: #f7f7f7;
-  font-family: sans-serif;
 }
 
-/* Game container */
-.game-container {
+.container {
   position: relative;
-  width: 100vw;
   height: 100vh;
+  display: flex;
   overflow: hidden;
-  background: linear-gradient(to bottom, #ffffff, #d3d3d3);
 }
 
-/* Dino character */
-.dino {
+/* Slide styles */
+.slide {
   position: absolute;
-  bottom: 20px;
-  left: 50px;
-  width: 50px;
-  height: 50px;
-  background-color: #333;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  background: linear-gradient(to bottom, #ff6f61, #f79d65);
+  color: white;
+  transition: transform 1s ease-in-out;
+  z-index: 1;
+}
+
+.slide.active {
+  left: 0;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.content {
+  max-width: 50%;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.cta {
+  padding: 15px 30px;
+  font-size: 1rem;
+  color: #ff6f61;
+  background: white;
+  border: none;
   border-radius: 5px;
-  animation: run-animation 0.5s steps(4) infinite;
-}
-
-/* Dino running animation */
-@keyframes run-animation {
-  0% { background-position: 0; }
-  100% { background-position: -200px; }
-}
-
-/* Dino jump animation */
-.dino.jump {
-  animation: jump 0.5s ease-out;
-}
-
-@keyframes jump {
-  0% { bottom: 20px; }
-  50% { bottom: 150px; }
-  100% { bottom: 20px; }
-}
-
-/* Obstacle */
-.obstacle {
-  position: absolute;
-  bottom: 20px;
-  right: -50px;
-  width: 20px;
-  height: 40px;
-  background-color: #555;
-  animation: obstacle-move 2s linear infinite;
-}
-
-/* Obstacle movement */
-@keyframes obstacle-move {
-  0% { transform: translateX(100vw); }
-  100% { transform: translateX(-120vw); }
-}
-
-/* Score display */
-.score {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 20px;
+  cursor: pointer;
   font-weight: bold;
-  color: #333;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta:hover {
+  background: #ffe0dc;
+  transform: scale(1.1);
+}
+
+.image {
+  width: 40%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation dots */
+.navigation {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover,
+.dot.active {
+  opacity: 1;
+  transform: scale(1.2);
 }
